@@ -1,0 +1,198 @@
+\documentclass[12pt]{extreport} % Schriftgröße: 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt oder 20pt
+
+% Language Setup (Deutsch)
+\usepackage[utf8]{inputenc} 
+\usepackage[english]{babel}
+
+%% Packages
+\usepackage{scrextend}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage[inline]{enumitem}
+\usepackage{changes}
+\usepackage{chngcntr}
+\usepackage{cmap}
+\usepackage{color}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{footnote}
+\usepackage{lmodern}
+\usepackage{makeidx}
+\usepackage{mathtools} 
+\usepackage{xpatch}
+\usepackage{pgfplots}
+\usepackage{stmaryrd}
+\usepackage{pbox}
+\usepackage{apptools}
+\usepackage{booktabs}
+\usepackage{dsfont}
+\usepackage{subcaption}
+	\expandafter\def\csname ver@subfig.sty\endcsname{}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage[square,numbers]{natbib}
+\usepackage{nicefrac}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{tocloft}
+\usepackage{url}
+\usepackage{xpatch}
+\usepackage{microtype}
+\usepackage{pgfplots}
+\usepackage{minibox}
+\usepackage{xcolor}
+\usepackage{sgame}  % Game theory packages
+\usepackage{subfig} % Manipulation and reference of small or sub figures and tables
+
+\makesavenoteenv{tabular}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{calc, intersections}
+\usetikzlibrary{trees, calc} % For extensive form games
+\pgfplotsset{compat=1.7}
+\usetikzlibrary{calc}	
+\usetikzlibrary{matrix}	
+
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{calc, intersections}
+\usetikzlibrary{trees, calc} % For extensive form games
+\pgfplotsset{compat=1.7}
+\usetikzlibrary{calc}	
+\usetikzlibrary{matrix}	
+
+% Options
+\makeatletter%%  
+  % Linkfarbe, {0,0.35,0.35} für Türkis, {0,0,0} für Schwarz 
+  \definecolor{linkcolor}{rgb}{0,0.35,0.35}
+  % Zeilenabstand für bessere Leserlichkeit
+  \def\mystretch{1.75} 
+  % Publisher definieren
+  \newcommand\publishers[1]{\newcommand\@publishers{#1}} 
+  % Enumerate im 1. Level: \alph für a), b), \dotsc
+  \renewcommand{\labelenumi}{\alph{enumi})} 
+  % Enumerate im 2. Level: \roman für (i), (ii), \dotsc
+  \renewcommand{\labelenumii}{(\roman{enumii})}
+  % Zeileneinrückung am Anfang des Absatzes
+  \setlength{\parindent}{0pt} 
+  % Verweise auf Enumerate, z.B.: 3.2 a)
+  \setlist[enumerate,1]{ref={\thesatz ~ \alph*)}}
+  % Für das Proof-Environment: 'Beweis:' anstatt 'Beweis.'
+  \xpatchcmd{\proof}{\@addpunct{.}}{\@addpunct{:}}{}{} 
+  % Nummerierung der Bilder, z.B.: Abbildung 4.1
+  \@ifundefined{thechapter}{}{\def\thefigure{\thechapter.\arabic{figure}}} 
+\makeatother%
+
+% Meta Setup (Für Titelblatt und Metadaten im PDF)
+\title{Finanzmathematik in diskreter Zeit}
+\author{Prof. Dr. Nicole Bäuerle}
+\date{Kurzskript ~\vspace{0.2cm} \\ Wintersemester 2016/17}
+\publishers{Karlsruher Institut für Technologie}
+
+%% Math. Definitions
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+%% Theorems (unnamedtheorem = Theorem ohne Namen)
+\newtheoremstyle{named}{}{}{\normalfont}{}{\bfseries}{:}{0.25em}{#2 \thmnote{#3}}
+\newtheoremstyle{itshape}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+\newtheoremstyle{normal}{}{}{\normalfont}{}{\bfseries}{:}{ }{}
+\renewcommand*{\qed}{\hfill\ensuremath{\square}}
+
+\theoremstyle{named}
+\newtheorem{unnamedtheorem}{Theorem} \counterwithin{unnamedtheorem}{chapter}
+\newtheorem*{unnamedtheorem*}{Theorem} 
+
+\theoremstyle{itshape}
+\newtheorem{theorem}[unnamedtheorem]{Theorem}	
+\newtheorem{satz}[unnamedtheorem]{Satz}	
+\newtheorem*{definition}{Definition}
+
+\theoremstyle{normal}
+\newtheorem{beispiel}[unnamedtheorem]{Beispiel}
+\newtheorem{example}[unnamedtheorem]{Example}
+\newtheorem{folgerung}[unnamedtheorem]{Folgerung}
+\newtheorem{hilfssatz}[unnamedtheorem]{Hilfssatz}
+\newtheorem{lemma}[unnamedtheorem]{Lemma}
+\newtheorem{proposition}[unnamedtheorem]{Proposition}
+\newtheorem{anwendung}[unnamedtheorem]{Anwendung}
+\newtheorem{anwendungen}[unnamedtheorem]{Anwendungen}
+\newtheorem*{beispiel*}{Beispiel}
+\newtheorem*{example*}{Example}
+\newtheorem*{beispiele}{Beispiele}
+\newtheorem*{examples}{Examples}
+\newtheorem*{bemerkung}{Bemerkung} 
+\newtheorem*{comment*}{Comment} 
+\newtheorem*{bemerkungen}{Bemerkungen}
+\newtheorem*{bezeichnung}{Bezeichnung}
+\newtheorem*{eigenschaften}{Eigenschaften}
+\newtheorem*{erinnerung}{Erinnerung}
+\newtheorem*{folgerung*}{Folgerung}
+\newtheorem*{folgerungen}{Folgerungen}
+\newtheorem*{hilfssatz*}{Hilfssatz}
+\newtheorem*{regeln}{Regeln}
+\newtheorem*{schreibweise}{Schreibweise}
+\newtheorem*{schreibweisen}{Schreibweisen}
+\newtheorem*{uebung}{übung}
+\newtheorem*{vereinbarung}{Vereinbarung}
+
+%% Template
+\makeatletter%
+\DeclareUnicodeCharacter{00A0}{ } \pgfplotsset{compat=1.7} \hypersetup{colorlinks,breaklinks, urlcolor=linkcolor, linkcolor=linkcolor, pdftitle=\@title, pdfauthor=\@author, pdfsubject=\@title, pdfcreator=\@publishers}\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}} \ProcessOptions \def\baselinestretch{\mystretch} \setlength{\oddsidemargin}{0.125in} \setlength{\evensidemargin}{0.125in} \setlength{\topmargin}{0.5in} \setlength{\textwidth}{6.25in} \setlength{\textheight}{8in} \addtolength{\topmargin}{-\headheight} \addtolength{\topmargin}{-\headsep} \def\pulldownheader{ \addtolength{\topmargin}{\headheight} \addtolength{\topmargin}{\headsep} \addtolength{\textheight}{-\headheight} \addtolength{\textheight}{-\headsep} } \def\pullupfooter{ \addtolength{\textheight}{-\footskip} } \def\ps@headings{\let\@mkboth\markboth \def\@oddfoot{} \def\@evenfoot{} \def\@oddhead{\hbox {}\sl \rightmark \hfil \rm\thepage} \def\chaptermark##1{\markright {\uppercase{\ifnum \c@secnumdepth >\m@ne \@chapapp\ \thechapter. \ \fi ##1}}} \pulldownheader } \def\ps@myheadings{\let\@mkboth\@gobbletwo \def\@oddfoot{} \def\@evenfoot{} \def\sectionmark##1{} \def\subsectionmark##1{}  \def\@evenhead{\rm \thepage\hfil\sl\leftmark\hbox {}} \def\@oddhead{\hbox{}\sl\rightmark \hfil \rm\thepage} \pulldownheader }	\def\chapter{\cleardoublepage  \thispagestyle{plain} \global\@topnum\z@ \@afterindentfalse \secdef\@chapter\@schapter} \def\@makeschapterhead#1{ {\parindent \z@ \raggedright \normalfont \interlinepenalty\@M \Huge \bfseries  #1\par\nobreak \vskip 40\p@ }} \newcommand{\indexsection}{chapter} \patchcmd{\@makechapterhead}{\vspace*{50\p@}}{}{}{}
+	% Titlepage
+	\def\maketitle{ \begin{titlepage} 
+			~\vspace{3cm} 
+		\begin{center} {\Huge \@title} \end{center} 
+	 		\vspace*{1cm} 
+	 	\begin{center} {\large \@author} \end{center} 
+	 	\begin{center} \@date \end{center} 
+	 		\vspace*{7cm} 
+	 	\begin{center} \@publishers \end{center} 
+	 		\vfill 
+	\end{titlepage} }
+\makeatother%
+
+% Indexdatei erstellen
+\makeindex 
+
+\begin{document}
+
+\pagenumbering{Alph}
+\begin{titlepage}
+	\maketitle
+	\thispagestyle{empty}
+\end{titlepage}
+\pagenumbering{arabic}
+	
+% Inhaltsverzeichnis
+\tableofcontents
+\thispagestyle{empty} 
+  
+% Skript - Anfang 
+\chapter{Motivation und erste Begriffe}
+
+Das Hauptziel in den folgenden Kapiteln ist die Bewertung von Derivaten. Ein Derivat ist ein Finanztitel, bei dem Zahlungen wesentlich von anderen Finanztiteln (Basistiteln) abhängen (derivare = ableiten). Beispiel für Derivate sind Termingeschäfte und Optionen. Termingeschäfte sind Verträge, bei denen die Erbringung von Leistungen und Gegenleistungen zu einem zukünftigen Zeitpunkt heute vereinbart werden. Zu Termingeschäften gehören
+\begin{itemize}
+	\item Warentermingeschäfte
+	\item Devisentermingeschäfte, z.B. kaufe zum Zeitpunkt $T$ eine bestimmte Anzahl von US Dollar zu einem festgelegten Wechselkurs.
+	\item Finanztermingeschäfte; man unterscheidet hier \textit{Financial Forwards} und \textit{Financial Futures}. Futures werden an Märkten gehandelt, z.B. am CBOT (Chicago Board of Trade) und EUREX (European Exchange).
+\end{itemize}
+
+Bei einer Option hat der Käufer das Wahlrecht (aber nicht die Verpflichtung) ein bestimmtes Finanzgut (z.B. eine Aktie) (engl.: underlying asset, underlying) bis zu einem zukünftigen Zeitpunkt $T$ /engl. maturity, expiry) zu einem vereinbarten Preis $K$ (engl.: strike price, exercise price, Ausübungspreis) zu kaufen oder zu verkaufen. Das Kaufrecht wird \textit{Call Option} genannt und das verkaufsrecht wird \textit{Put Option} genannt. Man unterscheidet:
+\begin{enumerate}
+	\item Europäische Option: Ausübung ist nur zum Zeitpunkt $T$ möglich.
+	\item Amerikanische Option: Ausübung ist jederzeit bis zum Zeitpunkt $T$ möglich.
+	\item Und noch viel mehr... (Asiatische Option, Bermuda Option, etc.)
+\end{enumerate} 
+
+\printindex
+
+\end{document}
